@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-yellow-taxi: oklch(0.86 0.171 92);
+  --color-paper: oklch(0.955 0.008 90);
+  --color-paper-worn: oklch(0.905 0.008 90);
+  --color-ink: oklch(0.185 0.008 75);
+  --color-ink-soft: oklch(0.34 0.012 75);
+  --color-red-poster: oklch(0.62 0.213 33);
+  --color-red-deep: oklch(0.52 0.195 33);
+  --color-kraft: oklch(0.83 0.05 84);
+  --color-paper-dim: oklch(0.78 0.015 85);
+
+  --font-display: "Anton", sans-serif;
+  --font-body: "Archivo", sans-serif;
+
+  --ease-slam: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("./assets/grain.png");
+}
+
+.torn-top {
+  position: relative;
+  margin-top: -14px;
+  clip-path: polygon(
+    0 12px, 4% 3px, 8% 11px, 13% 5px, 18% 13px, 24% 2px, 29% 10px, 35% 4px,
+    41% 12px, 47% 3px, 53% 9px, 58% 2px, 64% 11px, 70% 5px, 76% 13px, 82% 4px,
+    88% 10px, 93% 3px, 97% 9px, 100% 5px, 100% 100%, 0 100%
+  );
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-yellow-taxi);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-red-poster);
+  outline-offset: 3px;
+}
